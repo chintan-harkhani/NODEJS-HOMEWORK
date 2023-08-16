@@ -1,12 +1,14 @@
-const mongoose = require("mongoose");
-const config = require("../config/config");
+// const mongoose = require('mongoose');
+// const config = require("../config/config")
+//   const connectdb = async ()=>{
+//      mongooes
+//      .connect(config.mongodb.url,)
+//      .then((data)=>{
+//            console.log("Database connection Successfully");
+//      })
+//      .catch((error)=>{
+//         console.log("Database Connection Error",error);
+//      })
 
-const connectDB = async () =>{
-    mongoose.connect(config.mongodb.url , config.mongodb.options).then((data)=>{
-        console.log("DataBase SuccessFully Connected .....! ");
-
-    }).catch((Error)=>{
-         console.log("DataBase Connection Error !!....",Error);
-    });
-};
-module.exports = {connectDB}
+//   }
+// module.exports ={connectdb};
