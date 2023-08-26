@@ -15,11 +15,6 @@ const Creatbook  = {
       })
 }
 
-// const  GetBookList = {
-//       query : joi.object().keys({
-//       })
-// }
-
 module.exports = {
       Creatbook,
 //      GetBookList
