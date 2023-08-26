@@ -1,0 +1,15 @@
+const Joi = require("joi");
+
+const CreatePhamarcy = {
+    body: Joi.object().keys({
+        Full_name: Joi.string().required().trim(),
+        Email_id: Joi.string().required().trim(),
+        Contact_no: Joi.number().integer().required(),
+        City_Name: Joi.string().required().trim(),
+        Cource_fees: Joi.number().integer().required(),
+    }),
+}
+
+module.exports ={
+    CreatePhamarcy
+}
