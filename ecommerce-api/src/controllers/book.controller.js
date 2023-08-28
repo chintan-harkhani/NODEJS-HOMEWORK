@@ -1,4 +1,4 @@
-const { bookservice, userservice, categoryservice } = require("../services");
+const { bookservice} = require("../services");
 
 /** create book details */
 const CreateBook = async (req, res) => {
@@ -25,16 +25,12 @@ const CreateBook = async (req, res) => {
 const GetbookList = async (req, res) => {
      try {
           const GetList1 = await bookservice.GetBookList(req, res);
-          const GetList2 = await userservice.getuserlist(req, res);
-          const GetList3 = await categoryservice.GetCategoryList(req, res);
 
           res.status(200).json({
                success: true,
                message: "SuccessFully All Book list Get.....",
                data: {
-                    GetList1,
-                    GetList2,
-                    GetList3
+                    GetList1
                }
           })
      } catch (error) {
