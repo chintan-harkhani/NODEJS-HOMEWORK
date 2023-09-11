@@ -3,7 +3,7 @@ const { subcategory } = require("../models");
 //create sub category
 
 const SubcategoryCreate = async (reqBody) => {
-    return (await subcategory.create(reqBody)).populate("child_category" );
+    return (await subcategory.create(reqBody)).populate("category");
 };
 
 // sub category List
@@ -11,13 +11,13 @@ const SubcategoryCreate = async (reqBody) => {
 const SubcategoryList  = async(req ,res ) =>{
      return subcategory.find(
         // {$or :[{is_active : true}]}
-     ).populate("child_category" );
+     ).populate("category" );
 };
 
 // get  sub category id
 
 const SubcategoryId = async (subcategoryId) =>{
-     return subcategory.findById(subcategoryId).populate("child_category" );
+     return subcategory.findById(subcategoryId);
 };
 
 //delete us sub categoryer

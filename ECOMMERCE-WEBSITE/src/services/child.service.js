@@ -3,7 +3,7 @@ const { child } = require("../models");
 //create child
 
 const ChildCreate = async (reqBody) => {
-    return child.create(reqBody)
+    return (await (await child.create(reqBody)).populate("category")).populate("sub_category");
 };
 
 //list ChildList

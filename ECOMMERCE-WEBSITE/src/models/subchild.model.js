@@ -3,10 +3,18 @@ const mongoose = require("mongoose");
 const ChildSchema = new mongoose.Schema(
     
     {
+      category: {
+         type: mongoose.Types.ObjectId,
+         ref: "category"
+     },
          child_name :{
                type : String,
                trim : true
          },
+         sub_category :{
+            type: mongoose.Types.ObjectId,
+            ref: "subcategory"
+           },
             child_desc :{
              type : String,
              trim : true,

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tutorial</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+    <!-- CSS -->
+    <link href="style.css" rel="stylesheet">
+    <meta name="robots" content="noindex,follow" />
+
+  </head>
+
+  <body>
+    <main class="container" id="table">
+
+      <!-- Left Column / Headphones Image -->
+   
+
+
+      <!-- Right Column -->
+     
+
+
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" charset="utf-8"></script>
+    <script src="script.js" charset="utf-8"></script>
+
+    <script>
+     const apiUrl = 'http://localhost:7878/v1/product/productlist';
+
+fetch(apiUrl)
+    .then(response => {
+        return response.json();
+    })
+    .then(data => {
+        // Process and display the data
+        console.log(data);
+
+        let user = data.data;
+            console.log(user);
+
+            tbl ="";
+          user.map((val)=>{
+               tbl+=`
+               <div class="row">
+                <div class="left-column" >
+            <img class="active" src="${val.product_img}" alt="">
+          </div>
+      </div> 
+      <div class="right-column">
+
+<!-- Product Description -->
+<div class="product-description">
+  <span>${val.product_name} >  ${val.category.category_name} > ${val.sub_category.brand_name}</span>
+  <h2>${val.child_category.child_name}</h2>
+  <p>${val.child_category.child_desc}</p>
+</div>
+
+<!-- Product Configuration -->
+<div class="product-configuration">
+
+  <!-- Product Color -->
+  <div class="product-color">
+    <span>Color : -</span>
+  <h4 style="margin: 0; display: inline;">${val.category.color}</h4>
+  </div>
+  <div class="product-color">
+  <span>System : -</span>
+  <h4 style="margin: 0; display: inline;">${val.child_category.system}</h4>
+  </div>
+  <div class="product-color " style="    margin-bottom: 10px;">
+  <span style="margin-bottom: 0 !important;">Genaral : -</span>
+  <h4 style=" display: inline;">${val.child_category.genral}</h4>
+  </div>
+  <div class="product-color">
+   <span >System : -</span>
+  <h4 style="margin: 0; display: inline;">${val.child_category.system}</h4>
+  </div> 
+  <div class="product-color">
+   <span >Processor : -</span>
+  <h4 style="margin: 0; display: inline;">${val.child_category.processor}</h4>
+  </div>  
+  <div class="product-color">
+   <span >Other : -</span>
+  <h4 style="margin: 0; display: inline;">${val.child_category.other}</h4>
+  </div> 
+  </div>
+  <div class="product-color">
+   <span >Qty : -</span>
+  <button>${val.qty}</button>
+  </div> 
+  <div class="product-color">
+   <span >laptop Type : -</span>
+  <h4 style="margin: 0; display: inline;">${val.sub_category.subcategory_type}</h4>
+  </div> 
+  <div class="product-color">
+   <span >Stroage : -</span>
+  <h4 style="margin: 0; display: inline;">${val.sub_category.subcategory_stroage}</h4>
+  </div> 
+  <div class="product-color">
+   <span >Warranty : -</span>
+  <h4 style="margin: 0; display: inline;">${val.sub_category.subcategory_warranty}</h4>
+  </div> 
+  <div class="product-color">
+   <span >Review : -</span>
+  <h4 style="margin: 0; display: inline;">${val.sub_category.subcategory_review}</h4>
+  </div> 
+  <!-- Product Pricing -->
+<div class="product-price" style="    margin-top: 40px;">
+  <span>${val.product_price}INR</span>
+  <a href="#" class="cart-btn">Add to cart</a>
+</div>
+  </div>
+ 
+
+
+</div>
+</div>
+                                `
+          })
+          document.getElementById('table').innerHTML = tbl;
+
+    })
+    </script>
+  </body>
+</html>

@@ -14,7 +14,7 @@ const CreateChild =async (req ,res) =>{
           res.status(200).json({
             success: true,
             message: "Suucessfully Child Created!...",
-            data: { child }
+            data:  child
           })
      } catch (error) {
         res.status(400).json({success : false , message : error.message});
@@ -29,7 +29,7 @@ const  ChildList = async (req ,res) =>{
             res.status(200).json({
                 success : true,
                 message : " Child Data SuccessFully Get !.....",
-                data : {list}
+                data : list
             })
     } catch (error) {
         res.status(400).json({success : false , message : error.message});

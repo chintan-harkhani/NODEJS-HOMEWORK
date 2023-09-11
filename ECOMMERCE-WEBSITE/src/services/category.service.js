@@ -3,7 +3,7 @@ const { category } = require("../models");
 //create category
 
 const CategoryCreate = async (reqBody) => {
-    return (await (await category.create(reqBody)).populate("sub_catgory" )).populate("child_category")
+    return await category.create(reqBody);
 };
 
 //list category
@@ -11,7 +11,7 @@ const CategoryCreate = async (reqBody) => {
 const CategoryList = async (req, res) => {
     return category.find(
         // {$or :[{is_active : true}]}
-    ).populate("sub_catgory").populate("child_category");
+    )
 };
 
 // get category id

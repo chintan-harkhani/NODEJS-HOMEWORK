@@ -2,6 +2,10 @@ const mongoose = require("mongoose");
 
 const SubcategorySchema = new mongoose.Schema(
     {
+        category: {
+            type: mongoose.Types.ObjectId,
+            ref: "category"
+        },
         brand_name: {
             type: String,
             trim: true,
@@ -14,10 +18,7 @@ const SubcategorySchema = new mongoose.Schema(
             type: String,
             trim: true
         },
-        child_category: {
-            type: mongoose.Types.ObjectId,
-            ref: "ChildeCategory"
-        },
+
         subcategory_stroage: {
             type: String,
             trim: true

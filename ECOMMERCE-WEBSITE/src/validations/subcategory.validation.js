@@ -6,7 +6,7 @@ const CreateSubCategory = {
         brand_name: Joi.string().trim().required(),
         subcategory_type: Joi.string().trim().required(),
         subcategory_name: Joi.string().trim().required(),
-        child_category: Joi.string().trim().required(),
+        category: Joi.string().trim().required(),
         subcategory_stroage: Joi.string().trim().required(),
         subcategory_warranty: Joi.string().trim(),
         subcategory_review: Joi.string().trim(),

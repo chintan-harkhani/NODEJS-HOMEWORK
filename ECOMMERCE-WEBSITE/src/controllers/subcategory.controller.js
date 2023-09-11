@@ -14,7 +14,7 @@ const CreateSubCategory = async (req, res) => {
         res.status(200).json({
             success: true,
             message: "Suucessfully sub category Created!...",
-            data: { category }
+            data: category
         })
     } catch (error) {
         res.status(400).json({ success: false, message: error.message });
@@ -29,7 +29,7 @@ const SubCategoryList = async (req, res) => {
         res.status(200).json({
             success: true,
             message: " Sub Category Data SuccessFully Get !.....",
-            data: { list }
+            data: list
         })
     } catch (error) {
         res.status(400).json({ success: false, message: error.message });

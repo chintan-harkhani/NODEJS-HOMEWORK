@@ -14,14 +14,6 @@ const CategorySchema = new mongoose.Schema(
              type : String,
              trim : true,
         },
-        sub_catgory : {
-             type : mongoose.Types.ObjectId,
-             ref : "subcategory",
-        },
-        child_category: {
-            type: mongoose.Types.ObjectId,
-            ref: "ChildeCategory"
-        },
         is_active: {
             type: Boolean,
             default: true,
