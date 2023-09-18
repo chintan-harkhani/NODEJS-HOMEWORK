@@ -1,14 +1,13 @@
 const { SpoartManageService } = require("../services");
-const fs = require("fs");
 
-//create spoart 
+//create spoart
 
 const CreateSpoartManage = async (req, res) => {
     try {
         const reqBody = req.body;
-        if(req.file){
+        if (req.file) {
             reqBody.spoart_image = req.file.filename
-        }else{
+        } else {
             throw new Error("Product image is required.!");
         }
 
@@ -19,7 +18,7 @@ const CreateSpoartManage = async (req, res) => {
         res.status(200).json({
             success: true,
             message: "Suucessfully Spart mangement Created!...",
-            data: { spoart }
+            data: spoart
         })
     } catch (error) {
         res.status(400).json({ success: false, message: error.message });
@@ -28,46 +27,46 @@ const CreateSpoartManage = async (req, res) => {
 }
 
 //Spoart list
-const  SpoartMangeList = async (req ,res) =>{
+const SpoartMangeList = async (req, res) => {
     try {
-            const list = await  SpoartManageService.SpoartmangeList(req , res);
+        const list = await SpoartManageService.SpoartmangeList(req, res);
 
-            res.status(200).json({
-                success : true,
-                message : " Spoart Data SuccessFully Get !.....",
-                data : {list}
-            })
+        res.status(200).json({
+            success: true,
+            message: " Spoart Data SuccessFully Get !.....",
+            data: list
+        })
     } catch (error) {
-        res.status(400).json({success : false , message : error.message});
+        res.status(400).json({ success: false, message: error.message });
     }
 }
 
 //get Spoart id
 
-const SpoartMangeId = async ( req ,res) =>{
+const SpoartMangeId = async (req, res) => {
     try {
-            const  spoartmangeId = req.params.spoartmangeId;
-            const ID = await SpoartManageService.SpoartmangeId(spoartmangeId);
-            if(!ID){
-                throw new Error("Spoart Not Found !...");
-            };
-            res.status(200).json({
-                success: true,
-                message: "Suucessfully Spoart List Get!....",
-                data: { ID }
-            })
+        const spoartmangeId = req.params.spoartmangeId;
+        const ID = await SpoartManageService.SpoartmangeId(spoartmangeId);
+        if (!ID) {
+            throw new Error("Spoart Not Found !...");
+        };
+        res.status(200).json({
+            success: true,
+            message: "Suucessfully Spoart List Get!....",
+            data: { ID }
+        })
     } catch (error) {
-        res.status(400).json({success : false , message : error.message});
+        res.status(400).json({ success: false, message: error.message });
     }
 }
 
 //delete Spoart
 
-const DeleteSpoartMange = async (req ,res) =>{
-     try {
-        const  spoartmangeId = req.params.spoartmangeId;
+const DeleteSpoartMange = async (req, res) => {
+    try {
+        const spoartmangeId = req.params.spoartmangeId;
         const ID = await SpoartManageService.SpoartmangeId(spoartmangeId);
-        if(!ID){
+        if (!ID) {
             throw new Error("Spoart Not Found !...");
         };
 
@@ -76,35 +75,35 @@ const DeleteSpoartMange = async (req ,res) =>{
             success: true,
             message: "Suucessfully Spoart Details Deleted!....",
         });
-     } catch (error) {
-        res.status(400).json({success : false , message : error.message});
-     }
+    } catch (error) {
+        res.status(400).json({ success: false, message: error.message });
+    }
 }
 
 //update Spoart
 
-const UpdateSpoartMange= async (req,res) =>{
-     try {
-        const  spoartmangeId = req.params.spoartmangeId;
+const UpdateSpoartMange = async (req, res) => {
+    try {
+        const spoartmangeId = req.params.spoartmangeId;
         const ID = await SpoartManageService.SpoartmangeId(spoartmangeId);
-        if(!ID){
+        if (!ID) {
             throw new Error("Spoart Not Found !...");
         };
-        await SpoartManageService.UpdateSpoartmange(spoartmangeId , req.body);
+        await SpoartManageService.UpdateSpoartmange(spoartmangeId, req.body);
 
         res.status(200).json({
             success: true,
             message: "Spoart details update successfully!"
         });
-     } catch (error) {
-        res.status(400).json({success : false , message : error.message});
-     }
+    } catch (error) {
+        res.status(400).json({ success: false, message: error.message });
+    }
 }
 
 module.exports = {
-     CreateSpoartManage,
-     SpoartMangeList,
-     SpoartMangeId,
-     DeleteSpoartMange,
-     UpdateSpoartMange
+    CreateSpoartManage,
+    SpoartMangeList,
+    SpoartMangeId,
+    DeleteSpoartMange,
+    UpdateSpoartMange
 }

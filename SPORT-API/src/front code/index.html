@@ -8,27 +8,34 @@
 </head>
 
 <body>
-    <div class="card" id="card">
+    <div class="card" id="card" style="display: flex;">
 
     </div>
 </body>
 <script>
-     const apiUrl = 'http://localhost:8080/v1/spoartmange/spoartmangelist';
+    const apiUrl = 'http://localhost:8080/v1/spoartmange/spoartmangelist';
 
-fetch(apiUrl)
-    .then(response => {
-        return response.json();
-    })
-    .then(data => {
-        // Process and display the data
-        console.log(data);
-
-        let user = data;
-            console.log(user);
-
-                tbl ="";
-
-    })
+    fetch(apiUrl)
+        .then(response => {
+            return response.json();
+        })
+        .then(data => {
+            console.log(data);
+            let spoart = data.data;
+            console.log(spoart);
+      tbl = "";
+            spoart.map((val) => {
+                tbl+= `
+                       <div class="card" style="padding: 10px;">
+  <img src="${val.spoart_image}" alt="Avatar" style="width:300px ">
+  <div class="container">
+    <h4><b>${val.game_name}</b></h4>
+  </div>
+</div>
+                       `
+            })
+            document.getElementById('card').innerHTML = tbl;
+        })
 </script>
 
 </html>
